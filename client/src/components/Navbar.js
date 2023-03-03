@@ -1,25 +1,26 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap/dist/css/bootstrap.css";
-import { NavLink } from "react-router-dom";
-
-const handleLogOut = () => {
-	fetch("http://localhost:5000/logout", {
-		method: "POST",
-		credentials: "include",
-		headers: {
-			"Content-Type": "application/json",
-		},
-	})
-		.then((response) => {
-			console.log(response);
-		})
-		.catch((error) => {
-			console.log(error);
-		});
-};
+import { NavLink, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+	let navigate = useNavigate();
+	const handleLogOut = () => {
+		fetch("http://localhost:5000/logout", {
+			method: "POST",
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => {
+				console.log(response);
+				navigate("/login");
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 	return (
 		<>
 			<nav

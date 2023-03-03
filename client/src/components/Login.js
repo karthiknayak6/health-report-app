@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 export const Login = () => {
+	const navigate = useNavigate();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [allEntry, setAllEntry] = useState({ username: "", password: "" });
@@ -33,6 +34,7 @@ export const Login = () => {
 			})
 				.then((response) => {
 					console.log(response);
+					navigate("/");
 				})
 				.catch((error) => {
 					console.log(error);

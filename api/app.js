@@ -78,6 +78,7 @@ app.post("/register", async (req, res) => {
 		req.login(registeredUser, (err) => {
 			if (err) return next(err);
 			console.log("Registered successfully");
+			res.send("Registered successfully");
 		});
 	} catch (e) {
 		console.log("error " + e);

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 export const Signup = () => {
+	const navigate = useNavigate();
 	const [user, setUser] = useState({
 		username: "",
 		name: "",
@@ -35,6 +36,8 @@ export const Signup = () => {
 		})
 			.then((response) => {
 				console.log(response);
+				console.log("BHAHHA");
+				navigate("/login");
 			})
 			.catch((error) => {
 				console.log(error);

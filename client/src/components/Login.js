@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const Login = () => {
 	const navigate = useNavigate();
 	const [username, setUsername] = useState("");
@@ -34,10 +36,12 @@ export const Login = () => {
 			})
 				.then((response) => {
 					console.log(response);
+					toast("Logged in sucsessfully")
 					navigate("/");
 				})
 				.catch((error) => {
 					console.log(error);
+					toast(" Login unsucessfull ")
 				});
 		}
 	}, [allEntry]);
@@ -96,6 +100,7 @@ export const Login = () => {
 					</div>
 				</form>
 			</div>
+			<ToastContainer />
 		</div>
 	);
 };

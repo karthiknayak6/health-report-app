@@ -36,6 +36,7 @@ const Home = () => {
 	};
 
 	return (
+		
 		<div className="container6">
 			<div className="container7">
 				<div className="form-style-10">
@@ -116,6 +117,7 @@ const Home = () => {
 				</div>
 			</div>
 		</div>
+		
 	);
 };
 

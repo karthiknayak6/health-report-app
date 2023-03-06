@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const Signup = () => {
 	const navigate = useNavigate();
+	
 	const [user, setUser] = useState({
 		username: "",
 		name: "",
@@ -23,6 +27,7 @@ export const Signup = () => {
 	};
 	let counter = 0;
 	const handleSubmit = (e) => {
+		
 		e.preventDefault();
 		console.log(JSON.stringify({ data: user }));
 
@@ -36,12 +41,15 @@ export const Signup = () => {
 		})
 			.then((response) => {
 				console.log(response);
-				console.log("BHAHHA");
 				navigate("/login");
+				toast("Registration successful")
 			})
 			.catch((error) => {
 				console.log(error);
+				toast("Registration Unsucsessful")
 			});
+					
+			
 	};
 	// useEffect(() => {
 	// 	console.log("FETTTCHH ", counter);
@@ -79,47 +87,58 @@ export const Signup = () => {
 					style={{ marginTop: "70px" }}
 				>
 					<div className="col-md-5 ">
+					<label htmlFor="inputusername" className="form-label" >
+							Username
+						</label>
 						<input
 							type="text"
-							className="form-control text-bg-light p-3"
-							placeholder="username"
+							className="form-control text-bg-light p-2"
 							name="username"
+							required
 							aria-label="username"
 							value={user.username}
 							onChange={handleInputs}
 						/>
 					</div>
 					<div className="col-md-5 ">
+					<label htmlFor="inputfullname" className="form-label" >
+							Full name
+						</label>
 						<input
 							type="text"
-							className="form-control text-bg-light p-3"
-							placeholder="Full name"
+							className="form-control text-bg-light p-2"
 							name="name"
+							required
 							aria-label="First name"
 							value={user.name}
 							onChange={handleInputs}
 						/>
 					</div>
 
-					<div className="col-md-6">
+					<div className="col-md-5">
+					<label htmlFor="inputclinicname" className="form-label" >
+							Clinic name
+						</label>
 						<input
+						
 							type="text"
-							className="form-control text-bg-light p-3"
+							className="form-control text-bg-light p-2"
 							name="clinicname"
-							placeholder="Clinics name"
+							required
 							aria-label="Clinics name"
 							value={user.clinicname}
 							onChange={handleInputs}
 						/>
 					</div>
-					<div className="col-md-6">
-						<label htmlFor="inputEmail4" className="form-label">
+					<div className="col-md-5">
+						<label htmlFor="inputEmail4" className="form-label" >
 							Email
 						</label>
 						<input
 							type="email"
-							className="form-control"
+							className="form-control p-2"
 							id="inputEmail4"
+							required
 							value={user.email}
 							onChange={handleInputs}
 							name="email"
@@ -134,6 +153,7 @@ export const Signup = () => {
 							name="password"
 							className="form-control"
 							id="inputPassword4"
+							required
 							value={user.password}
 							onChange={handleInputs}
 						/>
@@ -147,6 +167,7 @@ export const Signup = () => {
 							className="form-control"
 							name="cpassword"
 							id="inputPassword5"
+							required
 							value={user.cpassword}
 							onChange={handleInputs}
 						/>
@@ -157,9 +178,10 @@ export const Signup = () => {
 						</label>
 						<input
 							type="text"
-							className="form-control"
+							className="form-control p-3"
 							id="inputAddress"
 							name="clinicaddress"
+							required
 							placeholder="1234 Main St"
 							value={user.clinicaddress}
 							onChange={handleInputs}
@@ -170,33 +192,25 @@ export const Signup = () => {
 							Contact Details
 						</label>
 						<input
-							type="number"
+							type="tel"
 							className="form-control"
 							name="contact"
+							required
 							id="inputCity"
 							value={user.contact}
 							onChange={handleInputs}
 						/>
 					</div>
 
+				
 					<div className="col-12">
-						<div className="form-check">
-							<input
-								className="form-check-input"
-								type="checkbox"
-								name="name"
-								id="gridCheck"
-							/>
-							<label className="form-check-label" htmlFor="gridCheck">
-								Check me out
-							</label>
-						</div>
-					</div>
-					<div className="col-12">
-						<button type="submit" className="btn btn-primary">
+						<button type="submit" className="btn btn-primary"
+						>
 							Sign in
 						</button>
+						
 					</div>
+					
 					<span>
 						<NavLink to="/Login" style={{ color: "black" }}>
 							{" "}
@@ -205,6 +219,8 @@ export const Signup = () => {
 					</span>
 				</form>
 			</div>
+			<ToastContainer />
 		</div>
+		
 	);
 };

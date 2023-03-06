@@ -70,13 +70,13 @@ export const Navbar = () => {
 								</NavLink>
 							</li>
 							<li className="nav-item">
-								<a
+								<button
 									style={{ cursor: "pointer" }}
 									onClick={handleLogOut}
 									className="nav-link"
 								>
 									Log out
-								</a>
+								</button>
 							</li>
 						</ul>
 					</div>

@@ -2,7 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap/dist/css/bootstrap.css";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const Navbar = () => {
 	let navigate = useNavigate();
 	const handleLogOut = () => {
@@ -15,6 +16,7 @@ export const Navbar = () => {
 		})
 			.then((response) => {
 				console.log(response);
+				toast("log out")
 				navigate("/login");
 			})
 			.catch((error) => {
@@ -70,10 +72,10 @@ export const Navbar = () => {
 								</NavLink>
 							</li>
 							<li className="nav-item">
-							<button type="button" class="btn btn-primary"
+							<button type="button" className="btn btn-primary"
 							    style={{cursor: "pointer" }}
-									onClick={handleLogOut}
-									className="nav-link">
+									onClick={handleLogOut}>
+									<ToastContainer />
 									Log out
 									</button>
 							</li>

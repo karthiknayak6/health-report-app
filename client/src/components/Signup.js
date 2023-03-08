@@ -6,6 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const Signup = () => {
 	const navigate = useNavigate();
+	const diffToast =()=>{
+		toast("Registration successful");
+	}
 	
 	const [user, setUser] = useState({
 		username: "",
@@ -40,9 +43,10 @@ export const Signup = () => {
 			body: JSON.stringify({ user }),
 		})
 			.then((response) => {
+				diffToast();
 				console.log(response);
+				
 				navigate("/login");
-				toast("Registration successful")
 			})
 			.catch((error) => {
 				console.log(error);

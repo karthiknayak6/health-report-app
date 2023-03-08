@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== "production") {
-	require("dotenv").config();
-}
+
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -52,7 +50,7 @@ passport.deserializeUser(User.deserializeUser());
 
 mongoose.set("strictQuery", false);
 
-mongoose.connect("mongodb://localhost:27017/app_auth", {
+mongoose.connect("mongodb://0.0.0.0:27017", {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
